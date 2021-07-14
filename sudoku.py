@@ -10,20 +10,21 @@ def penloc(x, y):
     t.pd()
 
 
-sudoko = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0]]
+# sudoko = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
+#           [0, 0, 0, 0, 0, 0, 0, 0, 0],
+#           [0, 0, 0, 0, 0, 0, 0, 0, 0],
+#           [0, 0, 0, 0, 0, 0, 0, 0, 0],
+#           [0, 0, 0, 0, 0, 0, 0, 0, 0],
+#           [0, 0, 0, 0, 0, 0, 0, 0, 0],
+#           [0, 0, 0, 0, 0, 0, 0, 0, 0],
+#           [0, 0, 0, 0, 0, 0, 0, 0, 0],
+#           [0, 0, 0, 0, 0, 0, 0, 0, 0]]
 sudoku = []
 innerSudoku = []
 allowedNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
+# check if number is possible
 def possible(y, x, n):
     global sudoku
     for a in range(9):
@@ -41,6 +42,7 @@ def possible(y, x, n):
     return True
 
 
+# solve the puzzle
 def solve():
     global sudoku
     for y in range(9):
@@ -54,6 +56,7 @@ def solve():
                 return
 
 
+# put number in table using tkinter buttons            
 def popSudoku(number):
     t.write(number, font=('Arial', 15, 'normal'))
     innerSudoku.append(int(number))
@@ -102,9 +105,8 @@ for i in range(-140, 141, 40):
     penloc(-180, i)
     t.fd(360)
 
-
+# tkinter window config
 penloc(-164, 150)
-
 t.pen(shown=True)
 t.pu()
 root = Tk()
@@ -117,18 +119,5 @@ btn = Button(root, text='Empty', bd='1', command=popSudoku(0), padx='10', pady='
 btn.pack(side='left')
 
 root.mainloop()
-root.
 
-# t.write('9', font=('Arial', 15, 'normal'))
-# for i in range(150, -171, -40):
-#     for j in range(-164, 161, 40):
-#         penloc(j, i)
-#         inp = input('Enter Number for Shown Cell (Enter 0 for Empty Cell): ')
-#         if inp in allowedNumbers:
-#             innerSudoku.append(inp)
-#         else:
-#             inp = input('Wrong Input, Try Again\nEnter Number for Shown Cell (Enter 0 for Empty Cell): ')
-#     sudoku.append(innerSudoku)
-#     t.clear()
-print(np.matrix(sudoku))
 t.done()
